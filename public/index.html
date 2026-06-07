@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bridging The Gap — Community Foundation</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96B;
+    --deep: #0A0F1A;
+    --dark: #111827;
+    --surface: #1A2235;
+    --surface2: #232F45;
+    --text: #F0EDE6;
+    --muted: #8B96A8;
+    --accent: #4A90D9;
+    --green: #2ECC8F;
+    --red: #E85D4A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--deep);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(10,15,26,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--text); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.9rem; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--deep);
+    border: none; border-radius: 6px;
+    padding: 0.6rem 1.4rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 0.9rem;
+    cursor: pointer; transition: background 0.2s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 8rem 3rem 4rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 70% 40%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 10% 80%, rgba(74,144,217,0.1) 0%, transparent 60%),
+      linear-gradient(160deg, #0A0F1A 0%, #111827 60%, #0D1520 100%);
+  }
+  .hero-grid-lines {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; max-width: 700px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 999px;
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem; font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 900; line-height: 1.05;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero-sub {
+    margin-top: 1.5rem;
+    font-size: 1.15rem; color: var(--muted);
+    line-height: 1.7; max-width: 540px;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3rem;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 700; color: var(--gold);
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+  .hero-btns {
+    display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--deep);
+    border: none; border-radius: 8px;
+    padding: 0.9rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    cursor: pointer; transition: all 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+  .btn-outline {
+    background: transparent; color: var(--text);
+    border: 1px solid rgba(255,255,255,0.2); border-radius: 8px;
+    padding: 0.9rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500; font-size: 1rem;
+    cursor: pointer; transition: all 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─── PHOTO BANNER ─── */
+  .photo-banner {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 42%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8rem 2rem 2rem;
+    overflow: hidden;
+  }
+  .photo-cell {
+    border-radius: 10px; overflow: hidden;
+    background: var(--surface);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; color: var(--muted);
+    position: relative;
+  }
+  .photo-cell.tall { grid-row: span 2; }
+  .photo-cell img { width: 100%; height: 100%; object-fit: cover; }
+  .photo-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10,15,26,0.6) 0%, transparent 50%);
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 6rem 3rem; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700; line-height: 1.15;
+  }
+  .section-title em { color: var(--gold); font-style: normal; }
+  .section-sub { color: var(--muted); font-size: 1.05rem; line-height: 1.7; margin-top: 1rem; max-width: 560px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* ─── IMPACT ─── */
+  .impact { background: var(--dark); }
+  .impact-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem; margin-top: 3.5rem;
+  }
+  .impact-card {
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 12px; padding: 2rem;
+    transition: all 0.3s;
+  }
+  .impact-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+  .impact-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .impact-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 700; color: var(--gold);
+  }
+  .impact-label { font-size: 0.95rem; color: var(--muted); margin-top: 0.3rem; }
+
+  /* ─── DONATION FORM ─── */
+  .donate { background: var(--deep); }
+  .form-wrapper {
+    max-width: 760px; margin: 3.5rem auto 0;
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 20px; padding: 3rem;
+  }
+
+  /* Progress steps */
+  .steps-bar {
+    display: flex; align-items: center; margin-bottom: 3rem;
+  }
+  .step {
+    display: flex; align-items: center; gap: 0.6rem; flex: 1;
+    font-size: 0.85rem; font-weight: 500; color: var(--muted);
+    transition: color 0.3s;
+  }
+  .step.active { color: var(--gold); }
+  .step.done { color: var(--green); }
+  .step-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 2px solid currentColor;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700;
+    transition: all 0.3s; flex-shrink: 0;
+  }
+  .step.active .step-num { background: var(--gold); border-color: var(--gold); color: var(--deep); }
+  .step.done .step-num { background: var(--green); border-color: var(--green); color: #fff; }
+  .step-connector {
+    flex: 1; height: 1px; background: rgba(255,255,255,0.1); margin: 0 0.5rem;
+  }
+  .step-connector.done { background: var(--green); }
+
+  /* Form panels */
+  .form-panel { display: none; animation: fadeUp 0.4s ease; }
+  .form-panel.active { display: block; }
+
+  .panel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem;
+  }
+  .panel-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
+
+  /* Donation type cards */
+  .type-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 2rem; }
+  .type-card {
+    background: var(--surface2);
+    border: 2px solid rgba(255,255,255,0.06);
+    border-radius: 12px; padding: 1.5rem 1rem;
+    cursor: pointer; text-align: center;
+    transition: all 0.25s;
+  }
+  .type-card:hover { border-color: rgba(201,168,76,0.4); }
+  .type-card.selected { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+  .type-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+  .type-name { font-weight: 600; font-size: 0.95rem; }
+  .type-desc { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+
+  /* Money amounts */
+  .amount-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-bottom: 1.5rem; }
+  .amount-btn {
+    background: var(--surface2);
+    border: 2px solid rgba(255,255,255,0.06);
+    border-radius: 8px; padding: 0.85rem;
+    color: var(--text); font-family: 'DM Sans', sans-serif;
+    font-weight: 600; font-size: 1rem;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .amount-btn:hover { border-color: rgba(201,168,76,0.4); }
+  .amount-btn.selected { border-color: var(--gold); background: rgba(201,168,76,0.1); color: var(--gold); }
+
+  /* Time slots */
+  .time-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-bottom: 1.5rem; }
+  .time-btn {
+    background: var(--surface2);
+    border: 2px solid rgba(255,255,255,0.06);
+    border-radius: 8px; padding: 1rem;
+    color: var(--text); font-family: 'DM Sans', sans-serif;
+    font-weight: 500; font-size: 0.9rem;
+    cursor: pointer; transition: all 0.2s; text-align: left;
+  }
+  .time-btn:hover { border-color: rgba(201,168,76,0.4); }
+  .time-btn.selected { border-color: var(--gold); background: rgba(201,168,76,0.1); }
+  .time-btn strong { display: block; font-size: 1rem; margin-bottom: 0.2rem; color: var(--gold); }
+
+  /* Goods categories */
+  .goods-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.5rem; }
+  .goods-btn {
+    background: var(--surface2);
+    border: 2px solid rgba(255,255,255,0.06);
+    border-radius: 8px; padding: 0.9rem 0.6rem;
+    color: var(--text); font-family: 'DM Sans', sans-serif;
+    font-weight: 500; font-size: 0.82rem;
+    cursor: pointer; transition: all 0.2s; text-align: center;
+  }
+  .goods-btn:hover { border-color: rgba(201,168,76,0.4); }
+  .goods-btn.selected { border-color: var(--gold); background: rgba(201,168,76,0.1); }
+  .goods-btn .g-icon { font-size: 1.6rem; display: block; margin-bottom: 0.3rem; }
+
+  /* Form fields */
+  .field-group { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .field { margin-bottom: 1.2rem; }
+  .field label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--muted); margin-bottom: 0.4rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .field input, .field select, .field textarea {
+    width: 100%; background: var(--surface2);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 0.85rem 1rem;
+    color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+    transition: border-color 0.2s; outline: none;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); }
+  .field select option { background: var(--surface2); }
+  .field textarea { resize: vertical; min-height: 90px; }
+
+  /* Recurrence */
+  .recur-row { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .recur-btn {
+    flex: 1; background: var(--surface2);
+    border: 2px solid rgba(255,255,255,0.06);
+    border-radius: 8px; padding: 0.7rem 0.5rem;
+    color: var(--text); font-family: 'DM Sans', sans-serif;
+    font-weight: 500; font-size: 0.85rem;
+    cursor: pointer; transition: all 0.2s; text-align: center;
+  }
+  .recur-btn.selected { border-color: var(--gold); background: rgba(201,168,76,0.1); color: var(--gold); }
+
+  /* Summary */
+  .summary-card {
+    background: var(--surface2); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem;
+  }
+  .summary-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 0.9rem; }
+  .summary-row:last-child { border-bottom: none; font-weight: 600; color: var(--gold); }
+  .summary-row .label { color: var(--muted); }
+
+  /* Buttons */
+  .form-nav { display: flex; justify-content: space-between; margin-top: 2rem; gap: 1rem; }
+  .btn-back {
+    background: transparent; color: var(--muted);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+    padding: 0.85rem 1.5rem;
+    font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.95rem;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-back:hover { border-color: var(--muted); color: var(--text); }
+  .btn-next {
+    background: var(--gold); color: var(--deep);
+    border: none; border-radius: 8px;
+    padding: 0.85rem 2rem; flex: 1;
+    font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1rem;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-next:hover { background: var(--gold-light); }
+  .btn-next:disabled { background: var(--muted); cursor: not-allowed; }
+
+  /* Success */
+  .success-panel { text-align: center; padding: 2rem 0; }
+  .success-icon { font-size: 4rem; margin-bottom: 1rem; }
+  .success-panel h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.75rem; }
+  .success-panel p { color: var(--muted); max-width: 400px; margin: 0 auto; }
+  .confetti { color: var(--gold); }
+
+  /* ─── PHOTO GALLERY SECTION ─── */
+  .gallery { background: var(--dark); }
+  .gallery-upload-info {
+    background: var(--surface); border: 1px dashed rgba(201,168,76,0.3);
+    border-radius: 12px; padding: 2rem; margin-top: 2rem; text-align: center;
+  }
+  .gallery-upload-info p { color: var(--muted); margin-bottom: 1rem; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem; margin-top: 2rem;
+  }
+  .gallery-placeholder {
+    aspect-ratio: 4/3; border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-size: 1.5rem;
+  }
+
+  /* ─── ABOUT ─── */
+  .about { background: var(--deep); }
+  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+  .value-chip {
+    background: var(--surface); border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 10px; padding: 1.2rem;
+  }
+  .value-chip .vi { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .value-chip h4 { font-size: 0.9rem; font-weight: 600; }
+  .value-chip p { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+  .quote-block {
+    background: var(--surface);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    padding: 2rem;
+  }
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-style: italic; line-height: 1.5;
+    color: var(--text);
+  }
+  .quote-attr { margin-top: 1rem; font-size: 0.85rem; color: var(--gold); font-weight: 600; }
+
+  /* ─── VOLUNTEER INFO ─── */
+  .volunteer { background: var(--surface); }
+  .vol-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .vol-card {
+    background: var(--dark); border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px; padding: 2rem;
+    transition: all 0.3s;
+  }
+  .vol-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .vol-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin: 1rem 0 0.5rem; }
+  .vol-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #060A12; border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 3rem;
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .footer-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.7; max-width: 280px; }
+  .footer-col h4 { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+  .footer-col a { display: block; color: var(--text); text-decoration: none; font-size: 0.9rem; margin-bottom: 0.5rem; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom {
+    background: #060A12; padding: 1rem 3rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.82rem; color: var(--muted);
+  }
+
+  /* ─── ADMIN PANEL (hidden by default) ─── */
+  .admin-panel {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.92); backdrop-filter: blur(8px);
+    overflow-y: auto;
+  }
+  .admin-inner {
+    max-width: 960px; margin: 2rem auto; padding: 2rem;
+    background: var(--surface); border-radius: 16px;
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+  .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+  .admin-header h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; }
+  .admin-close { background: none; border: none; color: var(--muted); font-size: 1.5rem; cursor: pointer; }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .data-table th { text-align: left; padding: 0.75rem 1rem; background: var(--surface2); color: var(--muted); font-weight: 600; font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .data-table td { padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .data-table tr:hover td { background: rgba(201,168,76,0.04); }
+  .badge { display: inline-block; padding: 0.25rem 0.6rem; border-radius: 999px; font-size: 0.72rem; font-weight: 600; }
+  .badge-money { background: rgba(46,204,143,0.15); color: var(--green); }
+  .badge-time { background: rgba(74,144,217,0.15); color: var(--accent); }
+  .badge-goods { background: rgba(201,168,76,0.15); color: var(--gold); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .photo-banner { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .type-grid { grid-template-columns: 1fr; }
+    .amount-grid { grid-template-columns: repeat(2, 1fr); }
+    .field-group { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .form-wrapper { padding: 1.5rem; }
+    .goods-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-logo">Bridging <span>The Gap</span></div>
+  <ul class="nav-links">
+    <li><a href="#impact">Our Impact</a></li>
+    <li><a href="#donate">Donate</a></li>
+    <li><a href="#volunteer">Volunteer</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#donate" class="nav-cta">Give Now</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🤝 Community-Powered Change</div>
+    <h1>Bridging<br/>The <em>Gap</em>,<br/>Together.</h1>
+    <p class="hero-sub">We connect people who care with communities that need — through money, time, and goods. Every contribution closes the distance between what is and what could be.</p>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">1,200+</div>
+        <div class="stat-label">Lives Touched</div>
+      </div>
+      <div>
+        <div class="stat-num">340</div>
+        <div class="stat-label">Active Volunteers</div>
+      </div>
+      <div>
+        <div class="stat-num">$82K</div>
+        <div class="stat-label">Raised This Year</div>
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="#donate" class="btn-primary">Start Donating</a>
+      <a href="#about" class="btn-outline">Learn More</a>
+    </div>
+  </div>
+  <div class="photo-banner" id="photoBanner">
+    <!-- Photos will be injected here by JS or added manually -->
+    <div class="photo-cell tall" style="background: linear-gradient(135deg, #1A2235, #232F45); font-size: 3rem; display:flex; align-items:center; justify-content:center;">🌉</div>
+    <div class="photo-cell" style="background: linear-gradient(135deg, #1A2235, #2a3550);">🤝</div>
+    <div class="photo-cell" style="background: linear-gradient(135deg, #1A2235, #2a3550);">❤️</div>
+    <div class="photo-cell tall" style="background: linear-gradient(135deg, #1A2235, #232F45); font-size: 3rem; display:flex; align-items:center; justify-content:center;">🌟</div>
+    <div class="photo-cell" style="background: linear-gradient(135deg, #1A2235, #2a3550);">🏘️</div>
+    <div class="photo-cell" style="background: linear-gradient(135deg, #1A2235, #2a3550);">🌱</div>
+  </div>
+</section>
+
+<!-- ─── IMPACT ─── -->
+<section class="impact" id="impact">
+  <div class="container">
+    <div class="section-label">Our Impact</div>
+    <h2 class="section-title">Every Dollar. Every Hour.<br/><em>Every Item. Counted.</em></h2>
+    <p class="section-sub">Transparent reporting on where your contributions go and the real difference they make in our community.</p>
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="impact-icon">💰</div>
+        <div class="impact-num">$82,400</div>
+        <div class="impact-label">Total Money Donated (2026)</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-icon">⏰</div>
+        <div class="impact-num">4,800 hrs</div>
+        <div class="impact-label">Volunteer Hours Logged</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-icon">📦</div>
+        <div class="impact-num">3,200+</div>
+        <div class="impact-label">Goods Donated & Distributed</div>
+      </div>
+      <div class="impact-card">
+        <div class="impact-icon">🏘️</div>
+        <div class="impact-num">18</div>
+        <div class="impact-label">Communities Served</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DONATION FORM ─── -->
+<section class="donate" id="donate">
+  <div class="container">
+    <div class="section-label">Get Involved</div>
+    <h2 class="section-title" style="text-align:center;"><em>How</em> Would You Like<br/>To Help?</h2>
+    <p class="section-sub" style="text-align:center; margin: 1rem auto 0;">Choose the way that works best for you. Every contribution — big or small — bridges a gap for someone who needs it.</p>
+
+    <div class="form-wrapper">
+      <!-- STEPS BAR -->
+      <div class="steps-bar" id="stepsBar">
+        <div class="step active" id="step1">
+          <div class="step-num">1</div>
+          <span>Type</span>
+        </div>
+        <div class="step-connector" id="conn1"></div>
+        <div class="step" id="step2">
+          <div class="step-num">2</div>
+          <span>Details</span>
+        </div>
+        <div class="step-connector" id="conn2"></div>
+        <div class="step" id="step3">
+          <div class="step-num">3</div>
+          <span>Info</span>
+        </div>
+        <div class="step-connector" id="conn3"></div>
+        <div class="step" id="step4">
+          <div class="step-num">4</div>
+          <span>Confirm</span>
+        </div>
+      </div>
+
+      <!-- PANEL 1: Choose Type -->
+      <div class="form-panel active" id="panel1">
+        <h3 class="panel-title">What would you like to donate?</h3>
+        <p class="panel-sub">Select one or more — you can always come back to add more ways to give.</p>
+        <div class="type-grid">
+          <div class="type-card" onclick="selectType(this, 'money')">
+            <div class="type-icon">💵</div>
+            <div class="type-name">Money</div>
+            <div class="type-desc">One-time or recurring financial gift</div>
+          </div>
+          <div class="type-card" onclick="selectType(this, 'time')">
+            <div class="type-icon">⏱️</div>
+            <div class="type-name">Time</div>
+            <div class="type-desc">Volunteer your skills and presence</div>
+          </div>
+          <div class="type-card" onclick="selectType(this, 'goods')">
+            <div class="type-icon">📦</div>
+            <div class="type-name">Goods</div>
+            <div class="type-desc">Donate physical items we need</div>
+          </div>
+        </div>
+        <div class="form-nav">
+          <div></div>
+          <button class="btn-next" id="nextBtn1" onclick="goToPanel(2)" disabled>Continue →</button>
+        </div>
+      </div>
+
+      <!-- PANEL 2: Details (changes based on type) -->
+      <div class="form-panel" id="panel2">
+        <!-- MONEY DETAILS -->
+        <div id="moneyDetails">
+          <h3 class="panel-title">Choose your gift amount</h3>
+          <p class="panel-sub">All donations are tax-deductible. You'll receive a receipt via email.</p>
+          <div class="amount-grid" id="amountGrid">
+            <button class="amount-btn" onclick="selectAmount(this, 25)">$25</button>
+            <button class="amount-btn" onclick="selectAmount(this, 50)">$50</button>
+            <button class="amount-btn" onclick="selectAmount(this, 100)">$100</button>
+            <button class="amount-btn" onclick="selectAmount(this, 250)">$250</button>
+            <button class="amount-btn" onclick="selectAmount(this, 500)">$500</button>
+            <button class="amount-btn" onclick="selectAmount(this, 1000)">$1,000</button>
+            <button class="amount-btn" onclick="selectAmount(this, 2500)">$2,500</button>
+            <button class="amount-btn" onclick="selectAmount(this, 0)" id="customAmtBtn">Other</button>
+          </div>
+          <div class="field" id="customAmtField" style="display:none;">
+            <label>Custom Amount ($)</label>
+            <input type="number" id="customAmt" placeholder="Enter amount" min="1" oninput="setCustomAmount(this.value)" />
+          </div>
+          <p style="font-size:0.85rem; color:var(--muted); margin-bottom:1rem;">Donation frequency:</p>
+          <div class="recur-row" id="recurRow">
+            <button class="recur-btn selected" onclick="selectRecur(this, 'one-time')">One-Time</button>
+            <button class="recur-btn" onclick="selectRecur(this, 'monthly')">Monthly</button>
+            <button class="recur-btn" onclick="selectRecur(this, 'quarterly')">Quarterly</button>
+            <button class="recur-btn" onclick="selectRecur(this, 'annually')">Annually</button>
+          </div>
+        </div>
+
+        <!-- TIME DETAILS -->
+        <div id="timeDetails" style="display:none;">
+          <h3 class="panel-title">How would you like to volunteer?</h3>
+          <p class="panel-sub">Select a time commitment that works for your schedule.</p>
+          <div class="time-grid">
+            <button class="time-btn" onclick="selectTime(this, '1-2 hrs/week')"><strong>1–2 hrs / week</strong>Light commitment — events & distributions</button>
+            <button class="time-btn" onclick="selectTime(this, '3-5 hrs/week')"><strong>3–5 hrs / week</strong>Regular volunteer — ongoing programs</button>
+            <button class="time-btn" onclick="selectTime(this, 'One-time event')"><strong>One-time Event</strong>Show up for a specific date & mission</button>
+            <button class="time-btn" onclick="selectTime(this, 'Skills-based')"><strong>Skills-Based</strong>Offer expertise (legal, medical, IT, etc.)</button>
+          </div>
+          <div class="field">
+            <label>What skills or interests do you bring?</label>
+            <textarea id="volunteerSkills" placeholder="e.g. graphic design, carpentry, nursing, cooking..."></textarea>
+          </div>
+          <div class="field">
+            <label>Preferred Days</label>
+            <select id="preferredDays">
+              <option value="">Select preference</option>
+              <option>Weekdays</option>
+              <option>Weekends</option>
+              <option>Either / Flexible</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- GOODS DETAILS -->
+        <div id="goodsDetails" style="display:none;">
+          <h3 class="panel-title">What goods would you like to donate?</h3>
+          <p class="panel-sub">Check what items you can contribute. We'll arrange pickup or drop-off.</p>
+          <div class="goods-grid" id="goodsGrid">
+            <button class="goods-btn" onclick="toggleGoods(this, 'Clothing')"><span class="g-icon">👕</span>Clothing</button>
+            <button class="goods-btn" onclick="toggleGoods(this, 'Food & Pantry')"><span class="g-icon">🥫</span>Food & Pantry</button>
+            <button class="goods-btn" onclick="toggleGoods(this, 'Furniture')"><span class="g-icon">🛋️</span>Furniture</button>
+            <button class="goods-btn" onclick="toggleGoods(this, 'Electronics')"><span class="g-icon">💻</span>Electronics</button>
+            <button class="goods-btn" onclick="toggleGoods(this, 'Hygiene Items')"><span class="g-icon">🧴</span>Hygiene Items</button>
+            <button class="goods-btn" onclick="toggleGoods(this, 'Books & Education')"><span class="g-icon">📚</span>Books & Education</button>
+            <button class="goods-btn" onclick="toggleGoods(this, 'Baby & Kids')"><span class="g-icon">🍼</span>Baby & Kids</button>
+            <button class="goods-btn" onclick="toggleGoods(this, 'Medical Supplies')"><span class="g-icon">💊</span>Medical Supplies</button>
+            <button class="goods-btn" onclick="toggleGoods(this, 'Other')"><span class="g-icon">📫</span>Other</button>
+          </div>
+          <div class="field">
+            <label>Describe item(s) and condition</label>
+            <textarea id="goodsDesc" placeholder="e.g. 3 boxes of winter clothing, gently used. 1 desk lamp, working condition."></textarea>
+          </div>
+          <div class="field">
+            <label>Preferred Drop-off / Pickup</label>
+            <select id="goodsDropoff">
+              <option value="">Select option</option>
+              <option>I'll drop off at your location</option>
+              <option>I need pickup scheduled</option>
+              <option>I need to discuss logistics</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-nav">
+          <button class="btn-back" onclick="goToPanel(1)">← Back</button>
+          <button class="btn-next" id="nextBtn2" onclick="goToPanel(3)" disabled>Continue →</button>
+        </div>
+      </div>
+
+      <!-- PANEL 3: Personal Info -->
+      <div class="form-panel" id="panel3">
+        <h3 class="panel-title">Tell us about yourself</h3>
+        <p class="panel-sub">Your info is stored securely and only used to coordinate your contribution. We never sell your data.</p>
+        <div class="field-group">
+          <div class="field">
+            <label>First Name *</label>
+            <input type="text" id="firstName" placeholder="Aaliyah" />
+          </div>
+          <div class="field">
+            <label>Last Name *</label>
+            <input type="text" id="lastName" placeholder="Johnson" />
+          </div>
+        </div>
+        <div class="field-group">
+          <div class="field">
+            <label>Email Address *</label>
+            <input type="email" id="email" placeholder="aaliyah@email.com" />
+          </div>
+          <div class="field">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" placeholder="(404) 555-0100" />
+          </div>
+        </div>
+        <div class="field-group">
+          <div class="field">
+            <label>City</label>
+            <input type="text" id="city" placeholder="Atlanta" />
+          </div>
+          <div class="field">
+            <label>State</label>
+            <select id="state">
+              <option value="">Select state</option>
+              <option>Georgia</option>
+              <option>Alabama</option>
+              <option>Florida</option>
+              <option>Tennessee</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>How did you hear about us?</label>
+          <select id="referral">
+            <option value="">Select one</option>
+            <option>Social Media</option>
+            <option>Friend / Family</option>
+            <option>Community Event</option>
+            <option>Google / Web Search</option>
+            <option>Flyer / Poster</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Message / Notes <span style="color:var(--muted); font-weight:400; text-transform:none;">(optional)</span></label>
+          <textarea id="notes" placeholder="Anything you'd like us to know..."></textarea>
+        </div>
+        <div class="form-nav">
+          <button class="btn-back" onclick="goToPanel(2)">← Back</button>
+          <button class="btn-next" id="nextBtn3" onclick="buildSummary(); goToPanel(4)">Review →</button>
+        </div>
+      </div>
+
+      <!-- PANEL 4: Confirm -->
+      <div class="form-panel" id="panel4">
+        <h3 class="panel-title">Review & Submit</h3>
+        <p class="panel-sub">Please confirm your contribution details before submitting.</p>
+        <div class="summary-card" id="summaryCard">
+          <!-- Built by JS -->
+        </div>
+        <div class="field" style="display:flex; align-items:flex-start; gap:0.75rem;">
+          <input type="checkbox" id="consentCheck" style="width:auto; margin-top:4px;" onchange="toggleSubmit()" />
+          <label for="consentCheck" style="text-transform:none; letter-spacing:0; font-size:0.88rem; color:var(--muted); cursor:pointer;">
+            I agree to Bridging The Gap storing my information securely to coordinate my contribution. I understand I can request deletion at any time.
+          </label>
+        </div>
+        <div class="form-nav">
+          <button class="btn-back" onclick="goToPanel(3)">← Back</button>
+          <button class="btn-next" id="submitBtn" onclick="submitForm()" disabled>Submit Donation ✓</button>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="form-panel" id="panelSuccess">
+        <div class="success-panel">
+          <div class="success-icon">🎉</div>
+          <h2>Thank You, <span id="successName"></span>!</h2>
+          <p style="margin-top:1rem; color:var(--muted);">Your contribution has been received. We'll be in touch within 24 hours to coordinate next steps. You're officially part of the bridge.</p>
+          <div style="margin-top:2rem;">
+            <a href="#" class="btn-primary" onclick="resetForm(); return false;">Make Another Contribution</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div>
+        <div class="section-label">Our Mission</div>
+        <h2 class="section-title">We Exist to<br/><em>Close the Distance</em></h2>
+        <p class="section-sub">Bridging The Gap was founded on the belief that poverty and inequity persist not because people don't care — but because the infrastructure to connect care with need is broken. We fix that.</p>
+        <div class="about-values">
+          <div class="value-chip">
+            <div class="vi">🏛️</div>
+            <h4>Accountability</h4>
+            <p>Every dollar tracked & reported</p>
+          </div>
+          <div class="value-chip">
+            <div class="vi">🤝</div>
+            <h4>Community First</h4>
+            <p>Led by the neighborhoods we serve</p>
+          </div>
+          <div class="value-chip">
+            <div class="vi">⚡</div>
+            <h4>Speed & Action</h4>
+            <p>No bureaucratic delay — we move fast</p>
+          </div>
+          <div class="value-chip">
+            <div class="vi">🔓</div>
+            <h4>Radical Openness</h4>
+            <p>Our books are always open</p>
+          </div>
+        </div>
+      </div>
+      <div class="quote-block">
+        <div class="quote-text">"The gap between where someone is and where they could be is rarely about effort. It's almost always about access. We provide access."</div>
+        <div class="quote-attr">— Bridging The Gap Founders</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── VOLUNTEER ─── -->
+<section class="volunteer" id="volunteer">
+  <div class="container">
+    <div class="section-label">Volunteer Opportunities</div>
+    <h2 class="section-title">Your Time <em>Changes Lives</em></h2>
+    <p class="section-sub">We have programs for every schedule, skill set, and capacity. No experience required — just heart.</p>
+    <div class="vol-cards">
+      <div class="vol-card">
+        <div style="font-size:2rem;">🥗</div>
+        <h3>Food Distributions</h3>
+        <p>Join our weekly food drives. We need packers, sorters, and drivers. Saturdays 8AM–12PM.</p>
+      </div>
+      <div class="vol-card">
+        <div style="font-size:2rem;">📖</div>
+        <h3>Youth Tutoring</h3>
+        <p>Volunteer as a tutor for K-12 students in math, reading, and STEM. Virtual or in-person options available.</p>
+      </div>
+      <div class="vol-card">
+        <div style="font-size:2rem;">🏠</div>
+        <h3>Home Repair & Rehab</h3>
+        <p>Help restore homes for elderly and disabled community members. Skills in trades a bonus but not required.</p>
+      </div>
+      <div class="vol-card">
+        <div style="font-size:2rem;">💼</div>
+        <h3>Career Coaching</h3>
+        <p>Mentor job seekers through resume reviews, mock interviews, and career guidance sessions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div>
+    <div class="footer-logo">Bridging The Gap</div>
+    <p class="footer-desc">A community foundation dedicated to connecting resources with those who need them most — through money, time, and goods.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Quick Links</h4>
+    <a href="#impact">Our Impact</a>
+    <a href="#donate">Donate</a>
+    <a href="#volunteer">Volunteer</a>
+    <a href="#about">About Us</a>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <a href="mailto:hello@bridgingthegap.org">hello@bridgingthegap.org</a>
+    <a href="tel:+14045550100">(404) 555-0100</a>
+    <a href="#">Mableton, GA</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 Bridging The Gap. All rights reserved.</span>
+  <span>501(c)(3) Nonprofit Organization</span>
+</div>
+
+<!-- ─── ADMIN PANEL ─── -->
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-inner">
+    <div class="admin-header">
+      <h2>📊 Donor Dashboard</h2>
+      <button class="admin-close" onclick="closeAdmin()">✕</button>
+    </div>
+    <p style="color:var(--muted); margin-bottom:1.5rem; font-size:0.9rem;">All submissions are stored in Azure SQL. This panel shows local session data. Connect your Azure endpoint to pull live records.</p>
+    <table class="data-table" id="adminTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Type</th>
+          <th>Details</th>
+          <th>City</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="adminBody">
+        <tr><td colspan="7" style="text-align:center; color:var(--muted); padding:2rem;">No submissions yet this session.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Secret admin trigger: triple-click footer -->
+<script>
+// ─── STATE ───
+let state = {
+  donationType: null,
+  amount: 0,
+  recurrence: 'one-time',
+  timeCommitment: null,
+  goods: [],
+  currentPanel: 1
+};
+let submissions = [];
+
+// ─── NAVIGATION ───
+function goToPanel(n) {
+  document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(n === 5 ? 'panelSuccess' : 'panel' + n).classList.add('active');
+  updateSteps(n);
+  state.currentPanel = n;
+  document.querySelector('.form-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function updateSteps(n) {
+  for (let i = 1; i <= 4; i++) {
+    const s = document.getElementById('step' + i);
+    s.className = 'step';
+    if (i < n) s.classList.add('done');
+    else if (i === n) s.classList.add('active');
+    if (i < 4) {
+      const c = document.getElementById('conn' + i);
+      c.className = 'step-connector';
+      if (i < n) c.classList.add('done');
+    }
+  }
+}
+
+// ─── TYPE SELECTION ───
+function selectType(el, type) {
+  document.querySelectorAll('.type-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  state.donationType = type;
+  document.getElementById('nextBtn1').disabled = false;
+
+  // Show correct detail panel
+  document.getElementById('moneyDetails').style.display = type === 'money' ? 'block' : 'none';
+  document.getElementById('timeDetails').style.display = type === 'time' ? 'block' : 'none';
+  document.getElementById('goodsDetails').style.display = type === 'goods' ? 'block' : 'none';
+  document.getElementById('nextBtn2').disabled = true;
+  state.amount = 0; state.timeCommitment = null; state.goods = [];
+}
+
+// ─── MONEY ───
+function selectAmount(el, amt) {
+  document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  if (amt === 0) {
+    document.getElementById('customAmtField').style.display = 'block';
+    state.amount = 0;
+  } else {
+    document.getElementById('customAmtField').style.display = 'none';
+    state.amount = amt;
+    checkPanel2();
+  }
+}
+function setCustomAmount(v) {
+  state.amount = parseFloat(v) || 0;
+  checkPanel2();
+}
+function selectRecur(el, r) {
+  document.querySelectorAll('.recur-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  state.recurrence = r;
+}
+
+// ─── TIME ───
+function selectTime(el, t) {
+  document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  state.timeCommitment = t;
+  checkPanel2();
+}
+
+// ─── GOODS ───
+function toggleGoods(el, item) {
+  el.classList.toggle('selected');
+  if (el.classList.contains('selected')) {
+    state.goods.push(item);
+  } else {
+    state.goods = state.goods.filter(g => g !== item);
+  }
+  checkPanel2();
+}
+
+function checkPanel2() {
+  const type = state.donationType;
+  let ok = false;
+  if (type === 'money') ok = state.amount > 0;
+  if (type === 'time') ok = state.timeCommitment !== null;
+  if (type === 'goods') ok = state.goods.length > 0;
+  document.getElementById('nextBtn2').disabled = !ok;
+}
+
+// ─── SUMMARY ───
+function buildSummary() {
+  const t = state.donationType;
+  let rows = '';
+  rows += `<div class="summary-row"><span class="label">Full Name</span><span>${getValue('firstName')} ${getValue('lastName')}</span></div>`;
+  rows += `<div class="summary-row"><span class="label">Email</span><span>${getValue('email')}</span></div>`;
+  rows += `<div class="summary-row"><span class="label">Phone</span><span>${getValue('phone') || '—'}</span></div>`;
+  rows += `<div class="summary-row"><span class="label">City / State</span><span>${getValue('city') || '—'}, ${getValue('state') || '—'}</span></div>`;
+  rows += `<div class="summary-row"><span class="label">Donation Type</span><span style="text-transform:capitalize;">${t}</span></div>`;
+  if (t === 'money') {
+    rows += `<div class="summary-row"><span class="label">Amount</span><span>$${state.amount.toLocaleString()}</span></div>`;
+    rows += `<div class="summary-row"><span class="label">Frequency</span><span style="text-transform:capitalize;">${state.recurrence}</span></div>`;
+  }
+  if (t === 'time') {
+    rows += `<div class="summary-row"><span class="label">Commitment</span><span>${state.timeCommitment}</span></div>`;
+    rows += `<div class="summary-row"><span class="label">Skills</span><span>${getValue('volunteerSkills') || '—'}</span></div>`;
+  }
+  if (t === 'goods') {
+    rows += `<div class="summary-row"><span class="label">Items</span><span>${state.goods.join(', ')}</span></div>`;
+    rows += `<div class="summary-row"><span class="label">Drop-off Pref.</span><span>${getValue('goodsDropoff') || '—'}</span></div>`;
+  }
+  rows += `<div class="summary-row"><span class="label">How you heard</span><span>${getValue('referral') || '—'}</span></div>`;
+  document.getElementById('summaryCard').innerHTML = rows;
+}
+
+function getValue(id) {
+  const el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+
+function toggleSubmit() {
+  document.getElementById('submitBtn').disabled = !document.getElementById('consentCheck').checked;
+}
+
+// ─── SUBMIT ───
+async function submitForm() {
+  const payload = {
+    first_name: getValue('firstName'),
+    last_name: getValue('lastName'),
+    email: getValue('email'),
+    phone: getValue('phone'),
+    city: getValue('city'),
+    state: getValue('state'),
+    donation_type: state.donationType,
+    amount: state.amount || null,
+    recurrence: state.donationType === 'money' ? state.recurrence : null,
+    time_commitment: state.timeCommitment,
+    volunteer_skills: getValue('volunteerSkills'),
+    preferred_days: getValue('preferredDays'),
+    goods_items: state.goods.join(', '),
+    goods_description: getValue('goodsDesc'),
+    goods_dropoff: getValue('goodsDropoff'),
+    referral_source: getValue('referral'),
+    notes: getValue('notes'),
+    submitted_at: new Date().toISOString()
+  };
+
+  // Store locally for admin panel
+  submissions.push(payload);
+  updateAdminTable();
+
+  // POST to your backend API
+  try {
+    const resp = await fetch('/api/submissions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!resp.ok) throw new Error('Server error');
+  } catch (e) {
+    console.warn('API not connected yet — stored locally:', payload);
+  }
+
+  document.getElementById('successName').textContent = payload.first_name;
+  goToPanel(5);
+}
+
+function resetForm() {
+  state = { donationType: null, amount: 0, recurrence: 'one-time', timeCommitment: null, goods: [], currentPanel: 1 };
+  document.querySelectorAll('.type-card, .amount-btn, .time-btn, .goods-btn, .recur-btn').forEach(el => el.classList.remove('selected'));
+  document.querySelectorAll('input[type=text], input[type=email], input[type=tel], input[type=number], textarea, select').forEach(el => el.value = '');
+  document.getElementById('consentCheck').checked = false;
+  goToPanel(1);
+}
+
+// ─── ADMIN ───
+function updateAdminTable() {
+  if (!submissions.length) return;
+  const tbody = document.getElementById('adminBody');
+  tbody.innerHTML = submissions.map(s => {
+    const badge = s.donation_type === 'money' ? 'badge-money' : s.donation_type === 'time' ? 'badge-time' : 'badge-goods';
+    const detail = s.donation_type === 'money'
+      ? `$${(s.amount||0).toLocaleString()} / ${s.recurrence}`
+      : s.donation_type === 'time'
+      ? s.time_commitment
+      : s.goods_items;
+    return `<tr>
+      <td>${s.first_name} ${s.last_name}</td>
+      <td>${s.email}</td>
+      <td>${s.phone || '—'}</td>
+      <td><span class="badge ${badge}">${s.donation_type}</span></td>
+      <td>${detail || '—'}</td>
+      <td>${s.city || '—'}</td>
+      <td>${new Date(s.submitted_at).toLocaleDateString()}</td>
+    </tr>`;
+  }).join('');
+}
+
+// Triple-click footer to open admin
+document.querySelector('footer').addEventListener('click', (() => {
+  let clicks = 0, timer;
+  return () => {
+    clicks++;
+    clearTimeout(timer);
+    timer = setTimeout(() => clicks = 0, 600);
+    if (clicks >= 3) { clicks = 0; document.getElementById('adminPanel').style.display = 'block'; }
+  };
+})());
+
+function closeAdmin() {
+  document.getElementById('adminPanel').style.display = 'none';
+}
+</script>
+</body>
+</html>
