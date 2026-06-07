@@ -1,5 +1,6 @@
-require('dotenv').config();
-const express = require('express');
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const path = require('path');
