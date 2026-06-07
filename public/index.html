@@ -74,13 +74,14 @@
     overflow: hidden;
     padding: 8rem 3rem 4rem;
   }
-  .hero-bg {
+ 
+.hero-bg {
     position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse 60% 60% at 70% 40%, rgba(201,168,76,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 40% 50% at 10% 80%, rgba(74,144,217,0.1) 0%, transparent 60%),
-      linear-gradient(160deg, #0A0F1A 0%, #111827 60%, #0D1520 100%);
+      linear-gradient(to right, rgba(10,15,26,0.92) 0%, rgba(10,15,26,0.75) 50%, rgba(10,15,26,0.4) 100%),
+      url('/photos/29CB0F58-0F0E-4514-A015-51083BD61491_1_105_c.jpeg') center center / cover no-repeat;
   }
+
   .hero-grid-lines {
     position: absolute; inset: 0; pointer-events: none;
     background-image:
@@ -386,6 +387,48 @@
     color: var(--muted); font-size: 1.5rem;
   }
 
+/* ─── GALLERY ─── */
+.gallery { background: var(--dark); padding: 6rem 3rem; }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.gallery-item {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.gallery-item:hover img { transform: scale(1.05); }
+.gallery-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(10,15,26,0.9), transparent);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 1.5rem 1rem 0.75rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gallery-item:hover .gallery-caption { opacity: 1; }
+@media (max-width: 900px) {
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+
+
   /* ─── ABOUT ─── */
   .about { background: var(--deep); }
   .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
@@ -531,15 +574,7 @@
       <a href="#about" class="btn-outline">Learn More</a>
     </div>
   </div>
-  <div class="photo-banner" id="photoBanner">
-    <!-- Photos will be injected here by JS or added manually -->
-    <div class="photo-cell tall" style="background: linear-gradient(135deg, #1A2235, #232F45); font-size: 3rem; display:flex; align-items:center; justify-content:center;">🌉</div>
-    <div class="photo-cell" style="background: linear-gradient(135deg, #1A2235, #2a3550);">🤝</div>
-    <div class="photo-cell" style="background: linear-gradient(135deg, #1A2235, #2a3550);">❤️</div>
-    <div class="photo-cell tall" style="background: linear-gradient(135deg, #1A2235, #232F45); font-size: 3rem; display:flex; align-items:center; justify-content:center;">🌟</div>
-    <div class="photo-cell" style="background: linear-gradient(135deg, #1A2235, #2a3550);">🏘️</div>
-    <div class="photo-cell" style="background: linear-gradient(135deg, #1A2235, #2a3550);">🌱</div>
-  </div>
+
 </section>
 
 <!-- ─── IMPACT ─── -->
@@ -817,6 +852,46 @@
     </div>
   </div>
 </section>
+
+<!-- ─── PHOTO GALLERY SECTION ─── -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-label">Our Work In Action</div>
+    <h2 class="section-title">This Is What <em>Bridging The Gap</em> Looks Like</h2>
+    <p class="section-sub">Real communities. Real impact. Across West Africa, Central America, and beyond.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="/photos/gallery1.jpg" alt="Handing food directly to a child in need" loading="lazy"/>
+        <div class="gallery-caption">Direct giving — West Africa</div>
+      </div>
+      <div class="gallery-item">
+        <img src="/photos/gallery2.jpg" alt="Food distribution to community" loading="lazy"/>
+        <div class="gallery-caption">Community food distribution</div>
+      </div>
+      <div class="gallery-item">
+        <img src="/photos/gallery3.jpg" alt="Children reaching up for food" loading="lazy"/>
+        <div class="gallery-caption">Every hand deserves to be filled</div>
+      </div>
+      <div class="gallery-item">
+        <img src="/photos/gallery4.jpg" alt="Building community relationships" loading="lazy"/>
+        <div class="gallery-caption">Community connection</div>
+      </div>
+      <div class="gallery-item">
+        <img src="/photos/gallery5.jpg" alt="Cross-cultural connection with children" loading="lazy"/>
+        <div class="gallery-caption">Building bonds across borders</div>
+      </div>
+      <div class="gallery-item">
+        <img src="/photos/gallery6.jpg" alt="With youth in Central America" loading="lazy"/>
+        <div class="gallery-caption">Youth engagement — Central America</div>
+      </div>
+      <div class="gallery-item">
+        <img src="/photos/gallery7.jpg" alt="Building sustainable food garden" loading="lazy"/>
+        <div class="gallery-caption">Sustainable development — growing food</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ─── ABOUT ─── -->
 <section class="about" id="about">
