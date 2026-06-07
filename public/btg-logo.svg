@@ -1,0 +1,314 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <!-- App icon clip - perfect rounded square -->
+    <clipPath id="iconClip">
+      <rect x="0" y="0" width="1024" height="1024" rx="224" ry="224"/>
+    </clipPath>
+
+    <!-- Background: rich deep navy to near-black -->
+    <radialGradient id="bg" cx="50%" cy="42%" r="65%">
+      <stop offset="0%" stop-color="#0E1E35"/>
+      <stop offset="60%" stop-color="#080F1C"/>
+      <stop offset="100%" stop-color="#030609"/>
+    </radialGradient>
+
+    <!-- Gold - warm, refined, not garish -->
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5D27A"/>
+      <stop offset="35%" stop-color="#D4A940"/>
+      <stop offset="70%" stop-color="#C49A2E"/>
+      <stop offset="100%" stop-color="#9A7520"/>
+    </linearGradient>
+
+    <!-- Gold horizontal shimmer for bridge deck -->
+    <linearGradient id="goldH" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9A7520"/>
+      <stop offset="25%" stop-color="#D4A940"/>
+      <stop offset="50%" stop-color="#F5D27A"/>
+      <stop offset="75%" stop-color="#D4A940"/>
+      <stop offset="100%" stop-color="#9A7520"/>
+    </linearGradient>
+
+    <!-- Left world - cool deep blue (northern/western) -->
+    <radialGradient id="wL" cx="38%" cy="40%" r="62%">
+      <stop offset="0%" stop-color="#1C4A7A"/>
+      <stop offset="45%" stop-color="#0E2D52"/>
+      <stop offset="100%" stop-color="#060F1E"/>
+    </radialGradient>
+
+    <!-- Right world - warm earth (southern/eastern) -->
+    <radialGradient id="wR" cx="62%" cy="40%" r="62%">
+      <stop offset="0%" stop-color="#4A3010"/>
+      <stop offset="45%" stop-color="#2E1D08"/>
+      <stop offset="100%" stop-color="#100A02"/>
+    </radialGradient>
+
+    <!-- Atmosphere glow left -->
+    <radialGradient id="atL" cx="50%" cy="50%" r="50%">
+      <stop offset="65%" stop-color="#0E2D52" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#1A7AC8" stop-opacity="0.28"/>
+    </radialGradient>
+
+    <!-- Atmosphere glow right -->
+    <radialGradient id="atR" cx="50%" cy="50%" r="50%">
+      <stop offset="65%" stop-color="#2E1D08" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#D4A940" stop-opacity="0.22"/>
+    </radialGradient>
+
+    <!-- Heart gold radial -->
+    <radialGradient id="heartFill" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#FFDF80"/>
+      <stop offset="50%" stop-color="#D4A940"/>
+      <stop offset="100%" stop-color="#9A7520"/>
+    </radialGradient>
+
+    <!-- Skin tone gradient for hands -->
+    <linearGradient id="skin" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7A4828"/>
+      <stop offset="40%" stop-color="#B87048"/>
+      <stop offset="100%" stop-color="#6E4020"/>
+    </linearGradient>
+
+    <!-- Cable vertical gradient -->
+    <linearGradient id="cable" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F5D27A" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#9A7520" stop-opacity="0.55"/>
+    </linearGradient>
+
+    <!-- Glow filters -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="heartGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="worldShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <g clip-path="url(#iconClip)">
+
+    <!-- ── BACKGROUND ── -->
+    <rect width="1024" height="1024" fill="url(#bg)"/>
+
+    <!-- Subtle ambient light from center -->
+    <ellipse cx="512" cy="460" rx="320" ry="240" fill="#D4A940" opacity="0.04"/>
+
+    <!-- Star field - restrained, elegant -->
+    <circle cx="110" cy="95" r="1.8" fill="#F5D27A" opacity="0.55"/>
+    <circle cx="265" cy="68" r="1.2" fill="white" opacity="0.35"/>
+    <circle cx="430" cy="48" r="2.2" fill="#F5D27A" opacity="0.5"/>
+    <circle cx="590" cy="75" r="1.4" fill="white" opacity="0.28"/>
+    <circle cx="756" cy="55" r="1.8" fill="#F5D27A" opacity="0.6"/>
+    <circle cx="912" cy="88" r="1.3" fill="white" opacity="0.38"/>
+    <circle cx="68" cy="185" r="1.2" fill="white" opacity="0.25"/>
+    <circle cx="955" cy="175" r="1.6" fill="#F5D27A" opacity="0.42"/>
+    <circle cx="140" cy="310" r="1" fill="white" opacity="0.2"/>
+    <circle cx="880" cy="295" r="1.4" fill="#F5D27A" opacity="0.35"/>
+
+    <!-- ── LEFT WORLD ── -->
+    <!-- Atmosphere halo -->
+    <circle cx="196" cy="468" r="175" fill="url(#atL)"/>
+    <!-- Globe body -->
+    <circle cx="196" cy="468" r="138" fill="url(#wL)" filter="url(#worldShadow)"/>
+    <!-- Specular highlight -->
+    <ellipse cx="162" cy="416" rx="42" ry="30" fill="white" opacity="0.055" transform="rotate(-20,162,416)"/>
+    <!-- Continent mass 1 -->
+    <path d="M168 432 Q182 414 204 422 Q222 432 220 458 Q218 480 202 494 Q184 505 168 494 Q153 481 158 458 Q163 437 168 432Z" fill="#1E6099" opacity="0.72"/>
+    <!-- Continent mass 2 -->
+    <path d="M204 436 Q218 426 230 436 Q238 446 232 464 Q224 476 210 472 Q197 466 200 450Z" fill="#175285" opacity="0.6"/>
+    <!-- Ocean lines -->
+    <path d="M148 462 Q166 457 184 462" stroke="#2A85C8" stroke-width="1.2" fill="none" opacity="0.38"/>
+    <path d="M144 478 Q162 473 180 478" stroke="#2A85C8" stroke-width="0.9" fill="none" opacity="0.28"/>
+    <!-- Globe limb -->
+    <circle cx="196" cy="468" r="138" fill="none" stroke="#1E6099" stroke-width="1.5" opacity="0.25"/>
+    <!-- Terminator line (day/night) -->
+    <path d="M196 330 Q240 400 230 540 Q220 560 196 606" stroke="#1A7AC8" stroke-width="1" fill="none" opacity="0.18"/>
+
+    <!-- ── RIGHT WORLD ── -->
+    <!-- Atmosphere halo -->
+    <circle cx="828" cy="468" r="175" fill="url(#atR)"/>
+    <!-- Globe body -->
+    <circle cx="828" cy="468" r="138" fill="url(#wR)" filter="url(#worldShadow)"/>
+    <!-- Specular highlight -->
+    <ellipse cx="794" cy="418" rx="40" ry="28" fill="white" opacity="0.045" transform="rotate(-18,794,418)"/>
+    <!-- Continent mass 1 -->
+    <path d="M798 430 Q814 410 838 422 Q856 434 854 460 Q852 484 836 498 Q818 508 802 496 Q786 482 792 458 Q797 436 798 430Z" fill="#7A5520" opacity="0.78"/>
+    <!-- Continent mass 2 -->
+    <path d="M840 436 Q856 424 870 436 Q878 448 870 468 Q860 480 846 476 Q832 470 835 452Z" fill="#6B4818" opacity="0.65"/>
+    <!-- Desert warmth -->
+    <path d="M808 500 Q820 494 832 500 Q838 508 830 516 Q820 520 810 514Z" fill="#8B6230" opacity="0.5"/>
+    <!-- Globe limb -->
+    <circle cx="828" cy="468" r="138" fill="none" stroke="#9A7520" stroke-width="1.5" opacity="0.2"/>
+
+    <!-- ── THE BRIDGE ── -->
+
+    <!-- Bridge shadow/base -->
+    <path d="M322 620 Q512 578 702 620" stroke="#0A0F18" stroke-width="24" fill="none" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- Bridge road deck -->
+    <path d="M318 614 Q512 572 706 614" stroke="url(#goldH)" stroke-width="20" fill="none" stroke-linecap="round" filter="url(#softGlow)"/>
+    <!-- Deck inner shadow -->
+    <path d="M325 616 Q512 575 699 616" stroke="#7A5510" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.45"/>
+    <!-- Deck highlight top edge -->
+    <path d="M322 610 Q512 568 702 610" stroke="#F5D27A" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Main suspension arch -->
+    <path d="M316 612 Q512 325 708 612" stroke="url(#gold)" stroke-width="13" fill="none" stroke-linecap="round" filter="url(#softGlow)"/>
+    <!-- Arch highlight -->
+    <path d="M324 608 Q512 342 700 608" stroke="#F5D27A" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.38"/>
+
+    <!-- Vertical suspension cables - mathematically spaced -->
+    <line x1="354" y1="540" x2="354" y2="612" stroke="url(#cable)" stroke-width="2.2" opacity="0.82"/>
+    <line x1="388" y1="498" x2="388" y2="610" stroke="url(#cable)" stroke-width="2.2" opacity="0.82"/>
+    <line x1="424" y1="468" x2="424" y2="608" stroke="url(#cable)" stroke-width="2.2" opacity="0.82"/>
+    <line x1="462" y1="448" x2="462" y2="606" stroke="url(#cable)" stroke-width="2.2" opacity="0.82"/>
+    <line x1="488" y1="440" x2="488" y2="604" stroke="url(#cable)" stroke-width="2.2" opacity="0.82"/>
+    <line x1="512" y1="436" x2="512" y2="602" stroke="url(#cable)" stroke-width="2.2" opacity="0.82"/>
+    <line x1="536" y1="440" x2="536" y2="604" stroke="url(#cable)" stroke-width="2.2" opacity="0.82"/>
+    <line x1="562" y1="448" x2="562" y2="606" stroke="url(#cable)" stroke-width="2.2" opacity="0.82"/>
+    <line x1="600" y1="468" x2="600" y2="608" stroke="url(#cable)" stroke-width="2.2" opacity="0.82"/>
+    <line x1="636" y1="498" x2="636" y2="610" stroke="url(#cable)" stroke-width="2.2" opacity="0.82"/>
+    <line x1="670" y1="540" x2="670" y2="612" stroke="url(#cable)" stroke-width="2.2" opacity="0.82"/>
+
+    <!-- LEFT TOWER -->
+    <rect x="374" y="447" width="17" height="170" rx="3.5" fill="url(#gold)" filter="url(#softGlow)"/>
+    <!-- Tower cap -->
+    <rect x="367" y="438" width="31" height="13" rx="4" fill="#F5D27A"/>
+    <rect x="365" y="436" width="35" height="5" rx="2.5" fill="#FFDF80" opacity="0.7"/>
+    <!-- Tower crossbeam -->
+    <rect x="366" y="576" width="34" height="8" rx="2" fill="#C49A2E" opacity="0.85"/>
+    <!-- Tower highlight -->
+    <rect x="374" y="447" width="5" height="170" rx="2" fill="#F5D27A" opacity="0.25"/>
+
+    <!-- RIGHT TOWER -->
+    <rect x="633" y="447" width="17" height="170" rx="3.5" fill="url(#gold)" filter="url(#softGlow)"/>
+    <rect x="626" y="438" width="31" height="13" rx="4" fill="#F5D27A"/>
+    <rect x="624" y="436" width="35" height="5" rx="2.5" fill="#FFDF80" opacity="0.7"/>
+    <rect x="625" y="576" width="34" height="8" rx="2" fill="#C49A2E" opacity="0.85"/>
+    <rect x="633" y="447" width="5" height="170" rx="2" fill="#F5D27A" opacity="0.25"/>
+
+    <!-- ── HANDS MEETING ── -->
+    <!-- The moment of connection - center of the icon -->
+
+    <!-- LEFT HAND (darker, reaching right) -->
+    <g opacity="0.93">
+      <!-- Wrist/forearm from left -->
+      <path d="M295 598 Q355 582 420 585 Q430 587 428 598 Q426 608 415 608 Q355 608 295 612Z" fill="#6E4020"/>
+      <!-- Palm base -->
+      <ellipse cx="438" cy="590" rx="30" ry="17" fill="#9A5830" transform="rotate(-8,438,590)"/>
+      <!-- Index finger -->
+      <path d="M448 572 Q474 560 486 566 Q491 570 485 576 Q472 572 454 580Z" fill="#B07040"/>
+      <!-- Middle finger -->
+      <path d="M446 578 Q470 568 481 575 Q486 580 479 585 Q468 581 450 587Z" fill="#A86838"/>
+      <!-- Ring finger -->
+      <path d="M444 585 Q466 576 476 583 Q480 589 473 593 Q463 590 448 594Z" fill="#B07040"/>
+      <!-- Pinky -->
+      <path d="M442 592 Q460 585 468 591 Q471 597 465 600 Q456 598 444 600Z" fill="#A06030"/>
+      <!-- Thumb -->
+      <path d="M426 580 Q436 568 448 572 Q454 576 450 583 Q440 585 428 588Z" fill="#9A5830"/>
+    </g>
+
+    <!-- RIGHT HAND (slightly warmer, reaching left) -->
+    <g opacity="0.93">
+      <!-- Wrist/forearm from right -->
+      <path d="M729 598 Q669 582 604 585 Q594 587 596 598 Q598 608 609 608 Q669 608 729 612Z" fill="#6E4020"/>
+      <!-- Palm base -->
+      <ellipse cx="586" cy="590" rx="30" ry="17" fill="#9A5830" transform="rotate(8,586,590)"/>
+      <!-- Index finger -->
+      <path d="M576 572 Q550 560 538 566 Q533 570 539 576 Q552 572 570 580Z" fill="#B07040"/>
+      <!-- Middle finger -->
+      <path d="M578 578 Q554 568 543 575 Q538 580 545 585 Q556 581 574 587Z" fill="#A86838"/>
+      <!-- Ring finger -->
+      <path d="M580 585 Q558 576 548 583 Q544 589 551 593 Q561 590 576 594Z" fill="#B07040"/>
+      <!-- Pinky -->
+      <path d="M582 592 Q564 585 556 591 Q553 597 559 600 Q568 598 580 600Z" fill="#A06030"/>
+      <!-- Thumb -->
+      <path d="M598 580 Q588 568 576 572 Q570 576 574 583 Q584 585 596 588Z" fill="#9A5830"/>
+    </g>
+
+    <!-- ── HEART ── -->
+    <!-- Outer glow pulse -->
+    <path d="M512 388 C512 388 468 356 450 374 C432 392 450 418 512 452 C574 418 592 392 574 374 C556 356 512 388 512 388Z" fill="#D4A940" opacity="0.18" filter="url(#heartGlow)"/>
+    <!-- Main heart -->
+    <path d="M512 398 C512 398 472 368 455 386 C438 404 455 428 512 460 C569 428 586 404 569 386 C552 368 512 398 512 398Z" fill="url(#heartFill)" filter="url(#softGlow)"/>
+    <!-- Heart inner highlight -->
+    <path d="M492 386 C498 377 511 380 513 387" stroke="white" stroke-width="2.2" fill="none" opacity="0.32" stroke-linecap="round"/>
+    <!-- Heart shadow base -->
+    <path d="M470 422 Q490 438 512 448 Q534 438 554 422" stroke="#9A7520" stroke-width="1.5" fill="none" opacity="0.3"/>
+
+    <!-- ── SPARKLE STARS ── -->
+    <!-- 4-point diamond stars - refined not cartoonish -->
+    <g fill="#F5D27A" filter="url(#softGlow)">
+      <!-- Left star -->
+      <path d="M442 356 L444.5 344 L447 356 L459 358.5 L447 361 L444.5 373 L442 361 L430 358.5Z" opacity="0.82"/>
+      <!-- Right star -->
+      <path d="M577 350 L579.5 340 L582 350 L592 352.5 L582 355 L579.5 365 L577 355 L567 352.5Z" opacity="0.75"/>
+      <!-- Small left accent -->
+      <path d="M426 388 L427.5 382 L429 388 L435 389.5 L429 391 L427.5 397 L426 391 L420 389.5Z" opacity="0.6"/>
+      <!-- Small right accent -->
+      <path d="M596 382 L597.5 376 L599 382 L605 383.5 L599 385 L597.5 391 L596 385 L590 383.5Z" opacity="0.6"/>
+      <!-- Tiny dot accents -->
+      <circle cx="460" cy="344" r="2.5" opacity="0.5"/>
+      <circle cx="564" cy="340" r="2" opacity="0.45"/>
+    </g>
+
+    <!-- ── TEXT AREA ── -->
+    <!-- Subtle separator line -->
+    <line x1="180" y1="672" x2="844" y2="672" stroke="#D4A940" stroke-width="0.8" opacity="0.22"/>
+
+    <!-- BRIDGING THE GAP — primary wordmark -->
+    <text x="512" y="728"
+      font-family="Georgia, 'Palatino Linotype', 'Book Antiqua', serif"
+      font-size="58"
+      font-weight="700"
+      fill="#D4A940"
+      text-anchor="middle"
+      letter-spacing="5">BRIDGING</text>
+
+    <!-- Thin decorative rule under BRIDGING -->
+    <line x1="310" y1="740" x2="714" y2="740" stroke="#D4A940" stroke-width="0.6" opacity="0.35"/>
+
+    <text x="512" y="790"
+      font-family="Georgia, 'Palatino Linotype', 'Book Antiqua', serif"
+      font-size="42"
+      font-weight="400"
+      fill="#E8DEC8"
+      text-anchor="middle"
+      letter-spacing="14">THE GAP</text>
+
+    <!-- Tagline -->
+    <text x="512" y="838"
+      font-family="Georgia, 'Palatino Linotype', serif"
+      font-size="19"
+      font-weight="400"
+      fill="#7A8898"
+      text-anchor="middle"
+      letter-spacing="5"
+      font-style="italic">connecting worlds · since 2026</text>
+
+    <!-- Bottom diamond ornament -->
+    <g transform="translate(512,868)" fill="#D4A940" opacity="0.55">
+      <path d="M0 -6 L4 0 L0 6 L-4 0Z"/>
+      <path d="M-20 0 L-14 0" stroke="#D4A940" stroke-width="0.8" fill="none"/>
+      <path d="M14 0 L20 0" stroke="#D4A940" stroke-width="0.8" fill="none"/>
+    </g>
+
+    <!-- ── BORDER ── -->
+    <!-- Outer border -->
+    <rect x="0" y="0" width="1024" height="1024" rx="224" ry="224"
+      fill="none" stroke="url(#gold)" stroke-width="5" opacity="0.32"/>
+    <!-- Inner inset border -->
+    <rect x="10" y="10" width="1004" height="1004" rx="216" ry="216"
+      fill="none" stroke="#D4A940" stroke-width="1.2" opacity="0.14"/>
+
+  </g>
+</svg>

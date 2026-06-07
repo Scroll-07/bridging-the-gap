@@ -1,0 +1,17 @@
+{
+  "name": "Bridging The Gap",
+  "short_name": "BTG",
+  "description": "Connecting communities through money, time, and goods.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0F1A",
+  "theme_color": "#0A0F1A",
+  "icons": [
+    {
+      "src": "/btg-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

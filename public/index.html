@@ -4,6 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Bridging The Gap — Community Foundation</title>
+
+<link rel="icon" type="image/svg+xml" href="/btg-icon.svg"/>
+<link rel="apple-touch-icon" href="/btg-icon.svg"/>
+<meta name="theme-color" content="#0A0F1A"/>
+<link rel="manifest" href="/manifest.json"/>
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
   :root {
@@ -40,13 +46,15 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(201,168,76,0.15);
   }
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem; font-weight: 700;
-    color: var(--gold);
-    letter-spacing: 0.02em;
+.nav-logo-link {
+    display: flex; align-items: center;
+    text-decoration: none;
   }
-  .nav-logo span { color: var(--text); }
+  .nav-logo-img {
+    height: 38px;
+    width: auto;
+    display: block;
+  }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
     color: var(--muted); text-decoration: none;
@@ -537,7 +545,9 @@
 
 <!-- ─── NAV ─── -->
 <nav>
-  <div class="nav-logo">Bridging <span>The Gap</span></div>
+<a href="#home" class="nav-logo-link">
+  <img src="/btg-logo.svg" alt="Bridging The Gap" class="nav-logo-img"/>
+</a>
   <ul class="nav-links">
     <li><a href="#impact">Our Impact</a></li>
     <li><a href="#donate">Donate</a></li>
