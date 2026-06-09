@@ -20,23 +20,33 @@ const config = {
 };
 
 let pool;
+
 async function getPool() {
-  if (!pool) {
-    let attempts = 0;
-    while (attempts < 5) {
-      try {
-        pool = await sql.connect(config);
-        console.log('Database connected successfully');
-        return pool;
-      } catch (err) {
-        attempts++;
-        console.log(`DB connection attempt ${attempts} failed. Retrying in 5s...`);
-        await new Promise(r => setTimeout(r, 5000));
-      }
+  if (pool) return pool;
+  
+  let attempts = 0;
+  const maxAttempts = 5;
+  
+  while (attempts < maxAttempts) {
+    try {
+      console.log(`DB connection attempt ${attempts + 1}...`);
+      pool = await sql.connect(config);
+      console.log('DB connected successfully');
+      return pool;
+    } catch (err) {
+      attempts++;
+      console.error(`DB attempt ${attempts} failed:`, err.message);
+      if (attempts >= maxAttempts) throw err;
+      // Wait before retrying — gives Azure time to wake up
+      await new Promise(resolve => setTimeout(resolve, 5000 * attempts));
     }
-    throw new Error('Could not connect to database after 5 attempts');
   }
-  return pool;
 }
+
+// Reset pool on error so next request tries fresh
+sql.on('error', err => {
+  console.error('SQL pool error:', err);
+  pool = null;
+});
 
 module.exports = { getPool, sql };
