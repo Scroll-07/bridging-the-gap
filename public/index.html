@@ -795,7 +795,7 @@
             <label>City</label>
             <input type="text" id="city" placeholder="Atlanta" />
           </div>
-          <div class="field">
+      <div class="field">
             <label>State</label>
             <select id="state">
               <option value="">Select state</option>
@@ -803,6 +803,108 @@
               <option>Alabama</option>
               <option>Florida</option>
               <option>Tennessee</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Country (if outside USA)</label>
+            <select id="country">
+              <option value="">United States</option>
+              <option>Afghanistan</option>
+              <option>Albania</option>
+              <option>Algeria</option>
+              <option>Angola</option>
+              <option>Argentina</option>
+              <option>Australia</option>
+              <option>Austria</option>
+              <option>Bahamas</option>
+              <option>Bangladesh</option>
+              <option>Belgium</option>
+              <option>Belize</option>
+              <option>Benin</option>
+              <option>Bolivia</option>
+              <option>Brazil</option>
+              <option>Burkina Faso</option>
+              <option>Cameroon</option>
+              <option>Canada</option>
+              <option>Chad</option>
+              <option>Chile</option>
+              <option>China</option>
+              <option>Colombia</option>
+              <option>Congo (DRC)</option>
+              <option>Congo (Republic)</option>
+              <option>Costa Rica</option>
+              <option>Côte d'Ivoire</option>
+              <option>Cuba</option>
+              <option>Dominican Republic</option>
+              <option>Ecuador</option>
+              <option>Egypt</option>
+              <option>El Salvador</option>
+              <option>Ethiopia</option>
+              <option>France</option>
+              <option>Gabon</option>
+              <option>Gambia</option>
+              <option>Germany</option>
+              <option>Ghana</option>
+              <option>Guatemala</option>
+              <option>Guinea</option>
+              <option>Haiti</option>
+              <option>Honduras</option>
+              <option>India</option>
+              <option>Indonesia</option>
+              <option>Iraq</option>
+              <option>Italy</option>
+              <option>Jamaica</option>
+              <option>Japan</option>
+              <option>Jordan</option>
+              <option>Kenya</option>
+              <option>Liberia</option>
+              <option>Libya</option>
+              <option>Madagascar</option>
+              <option>Malawi</option>
+              <option>Malaysia</option>
+              <option>Mali</option>
+              <option>Mexico</option>
+              <option>Morocco</option>
+              <option>Mozambique</option>
+              <option>Myanmar</option>
+              <option>Nepal</option>
+              <option>Netherlands</option>
+              <option>Nicaragua</option>
+              <option>Niger</option>
+              <option>Nigeria</option>
+              <option>Pakistan</option>
+              <option>Panama</option>
+              <option>Paraguay</option>
+              <option>Peru</option>
+              <option>Philippines</option>
+              <option>Portugal</option>
+              <option>Puerto Rico</option>
+              <option>Russia</option>
+              <option>Rwanda</option>
+              <option>Senegal</option>
+              <option>Sierra Leone</option>
+              <option>Somalia</option>
+              <option>South Africa</option>
+              <option>South Korea</option>
+              <option>South Sudan</option>
+              <option>Spain</option>
+              <option>Sudan</option>
+              <option>Tanzania</option>
+              <option>Thailand</option>
+              <option>Togo</option>
+              <option>Trinidad and Tobago</option>
+              <option>Tunisia</option>
+              <option>Turkey</option>
+              <option>Uganda</option>
+              <option>Ukraine</option>
+              <option>United Kingdom</option>
+              <option>Uruguay</option>
+              <option>Venezuela</option>
+              <option>Vietnam</option>
+              <option>Yemen</option>
+              <option>Zambia</option>
+              <option>Zimbabwe</option>
               <option>Other</option>
             </select>
           </div>
@@ -1163,13 +1265,14 @@ function toggleSubmit() {
 
 // ─── SUBMIT ───
 async function submitForm() {
-  const payload = {
-    first_name: getValue('firstName'),
-    last_name: getValue('lastName'),
-    email: getValue('email'),
-    phone: getValue('phone'),
-    city: getValue('city'),
-    state: getValue('state'),
+ const payload = {
+      first_name: getValue('firstName'),
+      last_name: getValue('lastName'),
+      email: getValue('email'),
+      phone: getValue('phone'),
+      city: getValue('city'),
+      state: getValue('state'),
+      country: getValue('country'),
     donation_type: state.donationType,
     amount: state.amount || null,
     recurrence: state.donationType === 'money' ? state.recurrence : null,

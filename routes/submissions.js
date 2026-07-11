@@ -7,8 +7,8 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 // POST /api/submissions
 router.post('/', async (req, res) => {
   try {
-    const {
-      first_name, last_name, email, phone, city, state,
+const {
+      first_name, last_name, email, phone, city, state, country,
       donation_type, amount, recurrence, time_commitment,
       volunteer_skills, preferred_days, goods_items,
       goods_description, goods_dropoff, referral_source, notes
@@ -26,6 +26,7 @@ router.post('/', async (req, res) => {
       .input('phone', sql.NVarChar(30), phone || null)
       .input('city', sql.NVarChar(100), city || null)
       .input('state', sql.NVarChar(50), state || null)
+      .input('country', sql.NVarChar(100), country || null)
       .input('donation_type', sql.NVarChar(20), donation_type)
       .input('amount', sql.Decimal(10, 2), amount || null)
       .input('recurrence', sql.NVarChar(20), recurrence || null)
@@ -38,12 +39,12 @@ router.post('/', async (req, res) => {
       .input('referral_source', sql.NVarChar(100), referral_source || null)
       .input('notes', sql.NVarChar(1000), notes || null)
       .query(`INSERT INTO donors (
-        first_name, last_name, email, phone, city, state,
+        first_name, last_name, email, phone, city, state, country,
         donation_type, amount, recurrence, time_commitment,
         volunteer_skills, preferred_days, goods_items,
         goods_description, goods_dropoff, referral_source, notes
       ) VALUES (
-        @first_name, @last_name, @email, @phone, @city, @state,
+        @first_name, @last_name, @email, @phone, @city, @state, @country,
         @donation_type, @amount, @recurrence, @time_commitment,
         @volunteer_skills, @preferred_days, @goods_items,
         @goods_description, @goods_dropoff, @referral_source, @notes
